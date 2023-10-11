@@ -32,12 +32,32 @@ namespace LanguageSchool.Pages
                 AddBtn.Visibility = Visibility.Hidden;
             }
 
-            var serviceList = App.db.Service.ToList();
-            foreach (var servase in serviceList)
+            Refresh();
+        }
+        private void Refresh()
+        {
+            IEnumerable<Service> serviceSortList = App.db.Service;
+            if (ShortCB.SelectedIndex != 0) 
             {
-                ServicesWp.Children.Add(new ServaseUserControl1(servase));
+                if (ShortCB.SelectedIndex == 1)
+                {
+                    serviceSortList = serviceSortList.OrderBy(x => x.CostDiscaunt);
+                }
+                else if (ShortCB.SelectedIndex == 2)
+                {
+                    serviceSortList = serviceSortList.OrderByDescending(x => x.CostDiscaunt);
+                } 
+            }
+            ServicesWp.Children.Clear();
+            foreach (var service in serviceSortList)
+            {
+                ServicesWp.Children.Add(new ServaseUserControl1(service));
             }
         }
 
+        private void ShortCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+         Refresh();
+        }
     }
 }

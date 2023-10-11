@@ -33,9 +33,9 @@ namespace LanguageSchool.Components
             TttleTB.Text = service.Title;
             CostTimeTB.Text = service.costTimeStr;
             DiscountTB.Text = service.DiscountStr;
-            CostTb.Text = service.Cost.ToString("N0");
+            CostTb.Text = service.Cost.ToString("0");
             CostTb.Visibility = service.Visibility;
-
+            MainBorder.Background = service.ColorServ;
 
         }
     }

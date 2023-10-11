@@ -20,7 +20,7 @@
         <Image Source="/Resources/school_logo.png" ></Image>
         <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Margin="5">
             <Button x:Name="BackBTN" Click="BackBTN_Click"  >Назад</Button>
-            <Button x:Name="ExsidBTN" Click="ForwardBTN_Click">Выход</Button>
+            <Button x:Name="ExsidBTN" Click="ExsidBTN_Click">Выход</Button>
         </StackPanel>
         <TextBlock x:Name="TitleTB" Grid.Column="1"> Школа языков “Леарн”</TextBlock>
         <Frame Grid.Column="1" Grid.Row="1" x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>

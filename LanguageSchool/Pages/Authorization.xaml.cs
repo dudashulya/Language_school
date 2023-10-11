@@ -30,7 +30,11 @@ namespace LanguageSchool.Pages
             if( PasswordPB.Password == "0000")
             {
                 App.isAdmin = true;
-
+                MessageBox.Show("Здравствуй администратор");
+            }
+            else
+            {
+                MessageBox.Show("Здравствуй друг");
             }
             NavigationService.Navigate(new ServaseListPages());
 

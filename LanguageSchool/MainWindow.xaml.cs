@@ -46,9 +46,10 @@ namespace LanguageSchool
            
         }
 
-        private void ForwardBTN_Click(object sender, RoutedEventArgs e)
+        private void ExsidBTN_Click(object sender, RoutedEventArgs e)
         {
             App.isAdmin = false;
+            
             MainFrame.Navigate(new Authorization());
         }
     }
