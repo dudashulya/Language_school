@@ -15,6 +15,6 @@ namespace LanguageSchool
     public partial class App : Application
     {
         public static langscholl321 db = new langscholl321 (); //соединение с базой
-      
+        public static bool isAdmin=false;
     }
-}
+}   
