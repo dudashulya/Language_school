@@ -5,33 +5,43 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LanguageSchool.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="365"
+      d:DesignHeight="450" d:DesignWidth="665"
       Title="AddEditservicePage">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Center" >
+        <StackPanel HorizontalAlignment="left" Width="200"  VerticalAlignment="Center" Margin="80"> 
             <StackPanel>
-                <Image Height="100"></Image>
+                <Border BorderBrush="Black" BorderThickness="3"><Image Height="110" Width="100"></Image></Border>
+                <Button >Изменить изображение </Button>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" >
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock>Индентификатор</TextBlock>
+                <TextBox Text="{Binding ID}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                
                 <TextBlock>Название</TextBlock>
-                <TextBox></TextBox>
+                <TextBox Text="{Binding Title}"></TextBox>
             </StackPanel>
+            
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock>Стоимость</TextBlock>
-                <TextBox></TextBox>
+                <TextBox Text="{Binding Cost}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock>Длительность</TextBlock>
-                <TextBox TextWrapping="Wrap" Height="100"></TextBox>
+                <TextBlock>Длительность в секундах</TextBlock>
+                <TextBox TextWrapping="Wrap" Height="100" Text="{Binding DurationInSeconds}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock>Описание</TextBlock>
-                <TextBox></TextBox>
+                <TextBox Text="{Binding Discription}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock>Скидка</TextBlock>
-                <TextBox></TextBox>
+                <TextBox Text="{Binding Discount}"></TextBox>
             </StackPanel>
             <StackPanel>
                 <Button>сохранить</Button>

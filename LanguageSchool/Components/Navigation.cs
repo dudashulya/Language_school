@@ -13,6 +13,12 @@ namespace LanguageSchool.Components
         private static List <PageComponents> components = new List <PageComponents> ();//хранит историю
         public static MainWindow mainWindow;  //находятся все элементы, получаем доступ к элементам
 
+
+        public static void ClearHistory() //очистка
+        {
+            App.isAdmin = false;
+            components.Clear ();
+        }
         private static void Update(PageComponents pageComponents)//содержит всю логику добавляем в нее пейдж и вызываем апдате
         {
             mainWindow.TitleTB.Text = pageComponents.Title; //запиши татле
@@ -26,7 +32,7 @@ namespace LanguageSchool.Components
             components.Add (pageComponents);
             Update(pageComponents);
         }
-        public static void BackPage(PageComponents pageComponents)
+        public static void BackPage()
         {
             if (components.Count > 1)
             {

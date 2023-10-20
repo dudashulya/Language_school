@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using LanguageSchool.Pages;
+using LanguageSchool.Components;
 
 namespace LanguageSchool
 {
@@ -25,32 +26,28 @@ namespace LanguageSchool
         public MainWindow()
         {
             InitializeComponent();
-            //var path = @"C:\Users\212112\Desktop\Task\Сессия 1\";
-            //foreach (var item in App.db.Service.ToArray())
-            //{
-            //    var fullPath = path + item.MainImagePath;
-            //    item.MainImage = File.ReadAllBytes(fullPath);
-            //}
-            //App.db.SaveChanges();  запись картинов в байтах в бд, делать перед преобразованием 
-            MainFrame.Navigate(new Authorization());
+            Navigation.mainWindow = this;//создали переменную  но нечему не равна она формата майнвиндоу
+                                         //var path = @"C:\Users\212112\Desktop\Task\Сессия 1\";
+                                         //foreach (var item in App.db.Service.ToArray())
+                                         //{
+                                         //    var fullPath = path + item.MainImagePath;
+                                         //    item.MainImage = File.ReadAllBytes(fullPath);
+                                         //}
+                                         //App.db.SaveChanges();  запись картинов в байтах в бд, делать перед преобразованием 
+            Navigation.NextPage(new PageComponents("Авторизация", new Authorization()));
+
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
-            if (MainFrame.CanGoBack)
-                
-            {
-                MainFrame.GoBack(); 
-                MainFrame.RemoveBackEntry();
-            }
+            Navigation.BackPage();
            
         }
 
         private void ExsidBTN_Click(object sender, RoutedEventArgs e)
         {
-            App.isAdmin = false;
-            
-            MainFrame.Navigate(new Authorization());
+            Navigation.ClearHistory();
+            Navigation.NextPage(new PageComponents("Авторизация", new Authorization()));
         }
     }
 }

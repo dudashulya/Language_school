@@ -22,10 +22,12 @@ namespace LanguageSchool.Components
     /// </summary>
     public partial class ServaseUserControl1 : UserControl
     {
-        public ServaseUserControl1(Service service)
+        public Service service;
+        public ServaseUserControl1(Service _service)
         {
+            
             InitializeComponent();
-
+            service = _service;
             if(App.isAdmin == false)
             {
                 EditBTN.Visibility = Visibility.Hidden;
@@ -53,7 +55,18 @@ namespace LanguageSchool.Components
 
         private void EditBTN_Click(object sender, RoutedEventArgs e)
         {
-           
+            Navigation.NextPage(new PageComponents("Редактирование", new AddEditservicePage(service)));
+        }
+
+        private void DeleteBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (service.ClientService != null)
+            { MessageBox.Show("Удаление запрещено!");}
+            else 
+                {
+               App.db.Service.Remove(service);
+               App.db.SaveChanges();
+            } 
         }
     }
 }

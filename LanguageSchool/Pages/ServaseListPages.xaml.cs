@@ -104,7 +104,7 @@ namespace LanguageSchool.Pages
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddEditservicePage());
+            Navigation.NextPage(new PageComponents ("Добавление Услуги",new AddEditservicePage(new Service())));
         }
     }
 }

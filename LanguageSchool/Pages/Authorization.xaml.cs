@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LanguageSchool.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,7 +37,7 @@ namespace LanguageSchool.Pages
             {
                 MessageBox.Show("Здравствуй друг");
             }
-            NavigationService.Navigate(new ServaseListPages());
+            Navigation.NextPage(new PageComponents("Список услуг", new ServaseListPages()));
 
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LanguageSchool.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace LanguageSchool.Pages
     /// </summary>
     public partial class AddEditservicePage : Page
     {
-        public AddEditservicePage()
+        private Service service;
+        public AddEditservicePage(Service _service)
         {
             InitializeComponent();
+            service = _service;
+            this.DataContext = service;
         }
     }
 }
