@@ -25,13 +25,13 @@ namespace LanguageSchool
         public MainWindow()
         {
             InitializeComponent();
-            // var path = @"C:\Users\212112\Desktop\Task\Сессия 1\";
-            //foreach(var item in App.db.Service.ToArray())
+            //var path = @"C:\Users\212112\Desktop\Task\Сессия 1\";
+            //foreach (var item in App.db.Service.ToArray())
             //{
             //    var fullPath = path + item.MainImagePath;
-            //    item.MainImage = File.ReadAllBytes(fullPath); 
+            //    item.MainImage = File.ReadAllBytes(fullPath);
             //}
-            //App.db.SaveChanges();
+            //App.db.SaveChanges();  запись картинов в байтах в бд, делать перед преобразованием 
             MainFrame.Navigate(new Authorization());
         }
 

@@ -16,5 +16,8 @@ namespace LanguageSchool
     {
         public static langscholl321 db = new langscholl321 (); //соединение с базой
         public static bool isAdmin=false;
+        
     }
+    //убегай, возьми меня, я хочу туда где ты дышишь
+    // это мокрая зима и сквозь дождь ты меня не слышишь
 }   

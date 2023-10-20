@@ -1,5 +1,7 @@
-﻿using System;
+﻿using LanguageSchool.Pages;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,7 +38,22 @@ namespace LanguageSchool.Components
             CostTb.Text = service.Cost.ToString("0");
             CostTb.Visibility = service.Visibility;
             MainBorder.Background = service.ColorServ;
+            ImageIMG.Source = GetImageSources(service.MainImage);//подключение картинок и их преобразование(превращение картинок из байтов в пнг )
 
+        }
+        private BitmapImage GetImageSources(byte[] byteImage)  //превращение картинок из байтов в пнг 
+        {
+            MemoryStream byteStream = new MemoryStream(byteImage);// мемори стрим с потоками байтов, считывать байты и выполнять с ними работу 
+            BitmapImage image = new BitmapImage();// отображает картинку в верстке битмапимаге
+            image.BeginInit();
+            image.StreamSource = byteStream;
+            image.EndInit();
+            return image;
+        }
+
+        private void EditBTN_Click(object sender, RoutedEventArgs e)
+        {
+           
         }
     }
 }
