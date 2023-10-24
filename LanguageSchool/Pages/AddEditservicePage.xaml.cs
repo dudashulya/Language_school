@@ -28,5 +28,49 @@ namespace LanguageSchool.Pages
             service = _service;
             this.DataContext = service;
         }
+
+        private void ChangeImageBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
+        {   StringBuilder error = new StringBuilder();//создание строки ошибки 
+           if(service.DurationInSeconds>14400|| service.DurationInSeconds<0)
+           {
+                error.AppendLine("Время услуги НЕ может превышать 4 часа!!!!!!!");
+           } 
+            if( service.ID ==0)
+            {   if (App.db.Service.Any(x => x.Title == service.Title))
+                {
+                    error.AppendLine("Такая услуга УЖЕ существует!!!!!!!!!!!!");
+                    MessageBox.Show(error.ToString());
+                }
+                else
+                {
+                    App.db.Service.Add(service);
+                }
+            }
+           if (error.Length>0)
+           {
+                MessageBox.Show(error.ToString());
+                return;
+           }
+            App.db.SaveChanges(  );
+           
+            
+            
+         
+        }
+
+    
+
+        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsDigit(e.Text, (0)))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

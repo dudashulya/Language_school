@@ -11,8 +11,8 @@
     <Grid>
         <StackPanel HorizontalAlignment="left" Width="200"  VerticalAlignment="Center" Margin="80"> 
             <StackPanel>
-                <Border BorderBrush="Black" BorderThickness="3"><Image Height="110" Width="100"></Image></Border>
-                <Button >Изменить изображение </Button>
+                <Border BorderBrush="Black" BorderThickness="3"><Image Source="{Binding MainImage }"   Height="110" Width="100"></Image></Border>
+                <Button x:Name="ChangeImageBtn" Click="ChangeImageBtn_Click" >Изменить изображение </Button>
             </StackPanel>
         </StackPanel>
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" >
@@ -28,23 +28,23 @@
             </StackPanel>
             
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock>Стоимость</TextBlock>
-                <TextBox Text="{Binding Cost}"></TextBox>
+                <TextBlock >Стоимость</TextBlock>
+                <TextBox Text="{Binding Cost}" PreviewTextInput="TextBox_PreviewTextInput"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock>Длительность в секундах</TextBlock>
-                <TextBox TextWrapping="Wrap" Height="100" Text="{Binding DurationInSeconds}"></TextBox>
+                <TextBox TextWrapping="Wrap" Height="100" Text="{Binding DurationInSeconds}" PreviewTextInput="TextBox_PreviewTextInput"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock>Описание</TextBlock>
                 <TextBox Text="{Binding Discription}"></TextBox>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
                 <TextBlock>Скидка</TextBlock>
-                <TextBox Text="{Binding Discount}"></TextBox>
+                <TextBox Text="{Binding Discount}" PreviewTextInput="TextBox_PreviewTextInput"></TextBox>
             </StackPanel>
             <StackPanel>
-                <Button>сохранить</Button>
+                <Button x:Name="SaveBtn" Click="SaveBtn_Click">сохранить</Button>
             </StackPanel>
         </StackPanel>
     </Grid>

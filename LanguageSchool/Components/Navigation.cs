@@ -53,5 +53,6 @@ namespace LanguageSchool.Components
             Title = title;
            
         }
+        // это не я, это ктото за меня 
     }
 }
