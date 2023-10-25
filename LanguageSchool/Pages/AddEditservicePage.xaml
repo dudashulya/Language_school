@@ -11,7 +11,7 @@
     <Grid>
         <StackPanel HorizontalAlignment="left" Width="200"  VerticalAlignment="Center" Margin="80"> 
             <StackPanel>
-                <Border BorderBrush="Black" BorderThickness="3"><Image Source="{Binding MainImage }"   Height="110" Width="100"></Image></Border>
+                <Border BorderBrush="Black" BorderThickness="3"><Image x:Name="MainImage" Source="{Binding  }"   Height="110" Width="100"></Image></Border>
                 <Button x:Name="ChangeImageBtn" Click="ChangeImageBtn_Click" >Изменить изображение </Button>
             </StackPanel>
         </StackPanel>

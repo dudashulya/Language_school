@@ -66,12 +66,14 @@ namespace LanguageSchool.Components
 
         private void DeleteBTN_Click(object sender, RoutedEventArgs e)
         {
-            if (service.ClientService != null)
+            if (service.ClientService.Count !=0)
             { MessageBox.Show("Удаление запрещено!");}
             else 
                 {
                App.db.Service.Remove(service);
                App.db.SaveChanges();
+                MessageBox.Show("Запись удалена:  "+service.Title);
+                Navigation.NextPage(new PageComponents("список услуг", new ServaseListPages()));
             } 
         }
     }

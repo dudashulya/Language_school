@@ -1,4 +1,5 @@
 ﻿using LanguageSchool.Components;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
+using System.IO;
 
 namespace LanguageSchool.Pages
 {
@@ -31,7 +34,16 @@ namespace LanguageSchool.Pages
 
         private void ChangeImageBtn_Click(object sender, RoutedEventArgs e)
         {
+            OpenFileDialog openFileDialog = new OpenFileDialog()
+            {
+                Filter = "*.png|*.png|*.jpg|*.jpg|*.jepg|*.jepg"
+            };
 
+           if (openFileDialog.ShowDialog().GetValueOrDefault())
+            {
+                service.MainImage = File.ReadAllBytes(openFileDialog.FileName);
+                MainImage.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+            }
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
@@ -57,8 +69,9 @@ namespace LanguageSchool.Pages
                 return;
            }
             App.db.SaveChanges(  );
-           
-            
+
+            MessageBox.Show("Сохранено");
+            Navigation.NextPage(new PageComponents("Список услуг", new ServaseListPages()));
             
          
         }
