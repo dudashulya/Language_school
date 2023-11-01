@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Microsoft.Win32;
+//using Microsoft.Win32;
 using System.IO;
 
 namespace LanguageSchool.Pages
@@ -30,6 +30,10 @@ namespace LanguageSchool.Pages
             InitializeComponent();
             service = _service;
             this.DataContext = service;
+           
+            PhotoList.ItemsSource = App.db.ServicePhoto.Where(x=> x.ServiceID == service.ID).ToList();
+            if(service.ID != 0)
+                EditImage.Visibility = Visibility.Visible;
         }
 
         private void ChangeImageBtn_Click(object sender, RoutedEventArgs e)
@@ -61,6 +65,8 @@ namespace LanguageSchool.Pages
                 else
                 {
                     App.db.Service.Add(service);
+                    EditImage.Visibility= Visibility.Visible;
+
                 }
             }
            if (error.Length>0)
@@ -71,7 +77,7 @@ namespace LanguageSchool.Pages
             App.db.SaveChanges(  );
 
             MessageBox.Show("Сохранено");
-            Navigation.NextPage(new PageComponents("Список услуг", new ServaseListPages()));
+            //Navigation.NextPage(new PageComponents("Список услуг", new ServaseListPages()));
             
          
         }
@@ -84,6 +90,44 @@ namespace LanguageSchool.Pages
             {
                 e.Handled = true;
             }
+        }
+
+        private void AddImageBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog()
+            {
+                Filter = "*.png|*.png|*.jpg|*.jpg|*.jepg|*.jepg"
+            };
+
+            if (openFileDialog.ShowDialog().GetValueOrDefault())
+            {
+                App.db.ServicePhoto.Add(new ServicePhoto()
+                {
+                    ServiceID = service.ID,
+                    PhotoByte = File.ReadAllBytes(openFileDialog.FileName)
+                });
+                App.db.SaveChanges();
+                PhotoList.ItemsSource = App.db.ServicePhoto.Where(x => x.ServiceID == service.ID).ToList();
+
+                //service.MainImage = File.ReadAllBytes(openFileDialog.FileName);
+                //MainImage.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+            }
+        }
+
+        private void DeleteImageBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var selectPhoto = PhotoList.SelectedItem as ServicePhoto;
+            if(PhotoList.SelectedItem != null)
+            {
+                App.db.ServicePhoto.Remove(selectPhoto);
+                App.db.SaveChanges();
+                PhotoList.ItemsSource = App.db.ServicePhoto.Where(x => x.ServiceID == service.ID).ToList();
+            }
+            else
+            {
+                MessageBox.Show("Ничего не выбрано");
+            }
+
         }
     }
 }

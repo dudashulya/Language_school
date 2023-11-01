@@ -9,12 +9,35 @@
       Title="AddEditservicePage">
 
     <Grid>
-        <StackPanel HorizontalAlignment="left" Width="200"  VerticalAlignment="Center" Margin="80"> 
+        <StackPanel HorizontalAlignment="left" VerticalAlignment="Center" Margin="80 0"> 
             <StackPanel>
-                <Border BorderBrush="Black" BorderThickness="3"><Image x:Name="MainImage" Source="{Binding  }"   Height="110" Width="100"></Image></Border>
+                <Border BorderBrush="Black" BorderThickness="3">
+                    <Image x:Name="MainImage" Source="{Binding MainImage}" Height="110"></Image>
+                </Border>
                 <Button x:Name="ChangeImageBtn" Click="ChangeImageBtn_Click" >Изменить изображение </Button>
             </StackPanel>
+            <StackPanel x:Name="EditImage" Visibility="Collapsed">
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Width="200"
+                Height="110" x:Name="PhotoList">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding PhotoByte}"></Image>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel></WrapPanel>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+
+                </ListView>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Button x:Name="AddImageBtn" Click="AddImageBtn_Click">Добавить</Button>
+                    <Button x:Name="DeleteImageBtn" Click="DeleteImageBtn_Click">Удалить</Button>
+                </StackPanel>
+            </StackPanel>
         </StackPanel>
+            
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" >
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
