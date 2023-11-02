@@ -31,6 +31,7 @@
 
             <TextBlock Grid.Row=" 2" Grid.Column="1"  x:Name="DiscountTB"></TextBlock>
             <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
+                <Button x:Name="SignBTN" Click="SignBTN_Click" >Записаться</Button>
                 <Button x:Name="EditBTN" Click="EditBTN_Click">Редактировать</Button>
                 <Button x:Name="DeleteBTN" Click="DeleteBTN_Click">Удалить</Button>
             </StackPanel>

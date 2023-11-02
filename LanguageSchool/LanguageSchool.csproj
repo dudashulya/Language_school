@@ -108,6 +108,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Components\Navigation.cs" />
+    <Compile Include="Components\PartialClass\Client.cs" />
     <Compile Include="Components\PartialClass\Service.cs" />
     <Compile Include="Components\Product.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -149,6 +150,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\SigningUpServicePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\AddEditservicePage.xaml.cs">
@@ -159,6 +164,9 @@
     </Compile>
     <Compile Include="Pages\ServaseListPages.xaml.cs">
       <DependentUpon>ServaseListPages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SigningUpServicePage.xaml.cs">
+      <DependentUpon>SigningUpServicePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
