@@ -30,6 +30,7 @@ namespace LanguageSchool.Pages
             if(App.isAdmin == false)
             {
                 AddBtn.Visibility = Visibility.Hidden;
+                EntryBtn.Visibility= Visibility.Hidden;
             }
 
             Refresh();
@@ -105,6 +106,11 @@ namespace LanguageSchool.Pages
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
             Navigation.NextPage(new PageComponents ("Добавление Услуги",new AddEditservicePage(new Service())));
+        }
+
+        private void EntryBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.NextPage(new PageComponents("Ближайшие записи", new UpcomingPage()));
         }
     }
 }

@@ -1,0 +1,28 @@
+﻿<Page x:Class="LanguageSchool.Pages.UpcomingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LanguageSchool.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="UpcomingPage">
+
+    <Grid>
+        <ListView  x:Name="EntryList">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn DisplayMemberBinding="{Binding Service.Title}" Header=" Наименование" Width="150"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Client.FullName}" Header=" Фио клиента"  Width="150"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Client.Email}" Header=" Почта"  Width="150"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Client.Phone}" Header=" Телефон" Width="100"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding StartTime, StringFormat=t}" Header=" Время записи"  Width="100"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding TimeStart}" Header=" Время до начала услуги"  Width="140"></GridViewColumn>
+                    </GridView.Columns>
+                    
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>

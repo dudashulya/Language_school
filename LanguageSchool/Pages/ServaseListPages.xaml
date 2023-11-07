@@ -36,8 +36,9 @@
             <WrapPanel  x:Name="ServicesWp"/>
         </ScrollViewer>
         
-        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Width="800" >
-            <Button Width="150" Height="35"  x:Name="AddBtn" Click="AddBtn_Click">Добавить</Button>
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal" Width="800" >
+            <Button Width="100" Height="35"  x:Name="AddBtn" Click="AddBtn_Click">Добавить</Button>
+            <Button  x:Name="EntryBtn" Height="35" Width="150" Click="EntryBtn_Click" >Ближайшие записи</Button>
             <TextBlock Margin="30 0" x:Name="CountDataTb"></TextBlock>
         </StackPanel>
 

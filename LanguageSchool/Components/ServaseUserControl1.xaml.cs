@@ -32,6 +32,8 @@ namespace LanguageSchool.Components
             {
                 EditBTN.Visibility = Visibility.Hidden;
                 DeleteBTN.Visibility = Visibility.Hidden;
+                SignBTN.Visibility = Visibility.Hidden;
+                   
             }
 
             TttleTB.Text = service.Title;
