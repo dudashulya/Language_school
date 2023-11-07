@@ -13,7 +13,23 @@ namespace LanguageSchool.Components
             get
             {
                 var time = StartTime - DateTime.Now;
-                return $" {time.Hours} : {time.Minutes}  ";
+                int hours =(int)time.TotalMinutes / 60;
+                int minutes =(int)time.TotalMinutes % 60;   
+                return $" {hours} : {minutes}  ";
+            }
+        }
+        public TimeSpan MyTimeStart
+        {
+            get
+            {
+
+            }
+        }
+        public string ColorStr
+        {   if()
+            get
+            {
+                return "#FF000"
             }
         }
     }

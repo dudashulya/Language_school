@@ -23,9 +23,9 @@ namespace LanguageSchool.Pages
         public UpcomingPage()
         {
             InitializeComponent();
-            var nextDate = DateTime.Today.AddDays(1);
+            var endtDate = DateTime.Today.AddDays(2);
      
-            EntryList.ItemsSource = App.db.ClientService.ToList();
+            EntryList.ItemsSource = App.db.ClientService.Where (x=>x.StartTime>= DateTime.Today && x.StartTime < endtDate).OrderBy(x=>x.StartTime).ToList();
             //EntryList.ItemsSource = App.db.ClientService.Where(x => x.StartTime.ToString("dd.MM.yyyy")== DateTime.Now.ToString("dd.MM.yyyy")|| x.StartTime.ToString("dd.MM.yyyy")== nextDate.ToString("dd.MM.yyyy")).ToList();
         }
     }
