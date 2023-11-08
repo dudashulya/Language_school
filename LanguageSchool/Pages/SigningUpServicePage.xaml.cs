@@ -32,59 +32,59 @@ namespace LanguageSchool.Pages
             ClientCb.DisplayMemberPath = "FullName";
             DateDp.DisplayDateStart = DateTime.Now;
         }
-       //// private bool IsValidTime(string time)
-       // {
-       //     //Regex formatTime = new Regex(@"\d:{2}\d:{2}") ;//задаем регулярное выражение 
-       //     //if (formatTime.IsMatch(time))// проверяем регул выраж
-       //     //{
-       //     //    return true;
-       //     //}
-       //     //else
-       //     //{
-       //     //    return false;
-       //     //}
-       // }
+        //// private bool IsValidTime(string time)
+        // {
+        //     //Regex formatTime = new Regex(@"\d:{2}\d:{2}") ;//задаем регулярное выражение 
+        //     //if (formatTime.IsMatch(time))// проверяем регул выраж
+        //     //{
+        //     //    return true;
+        //     //}
+        //     //else
+        //     //{
+        //     //    return false;
+        //     //}
+        // }
 
         private void SignUpBtn_Click(object sender, RoutedEventArgs e)
-        { 
+        {
             var selDateTime = $"{DateDp.SelectedDate.Value.ToString("yyyy-MM-dd")} {TimeTb.Text}";
             //var timeSplit = TimeTb.Text.Split(':');
             //var hour = int.Parse(timeSplit[0]);
             //var minute = int.Parse(timeSplit[1]);   
-               if( DateDp.SelectedDate != null && !string.IsNullOrWhiteSpace(TimeTb.Text) && ClientCb.SelectedItem!= null)
- 
+            if (DateDp.SelectedDate != null && !string.IsNullOrWhiteSpace(TimeTb.Text) && ClientCb.SelectedItem != null)
+
             {
 
-           
-            if (DateTime.TryParse(selDateTime, out DateTime result))
-            {
-                if(DateTime.Now< result)
+
+                if (DateTime.TryParse(selDateTime, out DateTime result))
                 {
+                    if (DateTime.Now < result)
+                    {
                         var selectClient = ClientCb.SelectedItem as Client;
                         App.db.ClientService.Add(new ClientService()
                         {
                             ClientID = selectClient.ID,
                             ServiceID = selectClient.ID,
-                            StartTime= result
+                            StartTime = result
 
                         });
-                        
-                    MessageBox.Show("good");
+
+                        MessageBox.Show("good");
                         App.db.SaveChanges();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Так нельзя записаться !!!!!!!!!!!!!!!!");
+                    }
+
                 }
                 else
                 {
-                    MessageBox.Show("Так нельзя записаться !!!!!!!!!!!!!!!!");
+                    MessageBox.Show("Неверный формат времени!");
                 }
-                
             }
             else
             {
-                MessageBox.Show("Неверный формат времени!");
-            } 
-            }
-               else
-            { 
                 MessageBox.Show("заполнить поля");
             }
         }

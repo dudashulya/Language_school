@@ -22,14 +22,22 @@ namespace LanguageSchool.Components
         {
             get
             {
-
+                return StartTime - DateTime.Now;
             }
         }
         public string ColorStr
-        {   if()
+        {   
             get
             {
-                return "#FF000"
+                if(MyTimeStart.TotalMinutes <60)
+                {
+                    return "#FF0000";
+                }
+                else
+                {
+                    return "#000000";
+                }
+               
             }
         }
     }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace LanguageSchool.Pages
 {
@@ -20,13 +21,23 @@ namespace LanguageSchool.Pages
     /// </summary>
     public partial class UpcomingPage : Page
     {
+        DateTime endDate = DateTime.Now.AddDays(2);
+        DispatcherTimer timer = new DispatcherTimer();
         public UpcomingPage()
         {
             InitializeComponent();
-            var endtDate = DateTime.Today.AddDays(2);
-     
-            EntryList.ItemsSource = App.db.ClientService.Where (x=>x.StartTime>= DateTime.Today && x.StartTime < endtDate).OrderBy(x=>x.StartTime).ToList();
+            timer.Tick += new EventHandler(Update);
+            timer.Interval = new TimeSpan(0, 0, 30);
+            timer.Start();
+            //var endtDate = DateTime.Today.AddDays(2);
+            EntryList.ItemsSource = App.db.ClientService.Where(x => x.StartTime >= DateTime.Today && x.StartTime >= DateTime.Now && x.StartTime < endDate).
+                OrderBy(x => x.StartTime).ToList();
             //EntryList.ItemsSource = App.db.ClientService.Where(x => x.StartTime.ToString("dd.MM.yyyy")== DateTime.Now.ToString("dd.MM.yyyy")|| x.StartTime.ToString("dd.MM.yyyy")== nextDate.ToString("dd.MM.yyyy")).ToList();
+        }
+        private void Update(object sender, EventArgs e)
+        {
+            EntryList.ItemsSource = App.db.ClientService.Where(x => x.StartTime >= DateTime.Today && x.StartTime >= DateTime.Now && x.StartTime < endDate).
+                           OrderBy(x => x.StartTime).ToList();
         }
     }
 }
